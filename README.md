@@ -1,15 +1,15 @@
 <div align="center">
-  <img src="assets/logo.png" alt="Super Volume Booster & Equalizer logo" width="120" />
+  <img src="assets/logo.png" alt="Super Volume Booster logo" width="120" />
 
   <h1>Super Volume Booster & Equalizer</h1>
 
   <p>
-    <strong>Free, open-source, privacy-first volume booster and equalizer for Chrome.</strong>
+    <strong>Бесплатное open-source расширение для Google Chrome: усилитель громкости до 600% и 3-полосный эквалайзер без слежки.</strong>
   </p>
 
   <p>
-    Boost tab audio up to <strong>600%</strong>, tune bass/mids/treble, and keep your settings locally —
-    no tracking, no analytics, no remote servers.
+    Усиливает звук активной вкладки, позволяет настраивать низкие, средние и высокие частоты,
+    хранит настройки локально и не отправляет данные пользователя на внешние серверы.
   </p>
 
   <p>
@@ -17,84 +17,129 @@
     <img alt="Chrome Manifest V3" src="https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white">
     <img alt="Privacy First" src="https://img.shields.io/badge/Privacy-No%20tracking-7C3AED">
     <img alt="No telemetry" src="https://img.shields.io/badge/Telemetry-None-0EA5E9">
-    <img alt="Status" src="https://img.shields.io/badge/Status-Active%20development-orange">
+    <img alt="Open Source" src="https://img.shields.io/badge/Open%20Source-Yes-10B981">
   </p>
 
   <p>
-    <a href="#features">Features</a> ·
-    <a href="#privacy">Privacy</a> ·
-    <a href="#installation">Installation</a> ·
-    <a href="#permissions">Permissions</a> ·
-    <a href="#contributing">Contributing</a>
+    <a href="https://github.com/kokarevn/super-volume-booster/archive/refs/heads/main.zip">
+      <img alt="Скачать ZIP" src="https://img.shields.io/badge/Скачать-ZIP%20архив-7C3AED?style=for-the-badge&logo=github&logoColor=white">
+    </a>
+  </p>
+
+  <p>
+    <a href="#возможности">Возможности</a> ·
+    <a href="#интерфейс">Интерфейс</a> ·
+    <a href="#установка">Установка</a> ·
+    <a href="#архитектура">Архитектура</a> ·
+    <a href="#конфиденциальность">Конфиденциальность</a>
   </p>
 </div>
 
 ---
 
-## Why this extension exists
+## О проекте
 
-Many browser audio extensions ask for broad permissions, inject code into pages, or make it difficult to understand what happens with user data. **Super Volume Booster & Equalizer** is built around a different idea: the code should be simple, readable, and transparent.
+**Super Volume Booster & Equalizer** — это расширение для Google Chrome, которое усиливает звук активной вкладки и позволяет настраивать звучание через простой эквалайзер.
 
-This project gives users a clean audio booster and equalizer without accounts, analytics, ads, or background data collection.
+Проект создан как прозрачная и безопасная альтернатива сомнительным бесплатным аудио-расширениям. Код открыт, обработка звука выполняется локально в браузере, а настройки сохраняются только на устройстве пользователя.
 
-> The extension processes tab audio locally in the browser using the Web Audio API. It does not send browsing activity, audio, settings, or any personal data to external servers.
+> Расширение не использует аналитику, не содержит рекламных или трекинговых скриптов и не передаёт историю просмотров, аудио или настройки на внешние серверы.
 
-## Features
+## Возможности
 
-- **Volume boost up to 600%** for the active browser tab.
-- **3-band equalizer** for bass, mids, and treble.
-- **Built-in presets**: Bass+, Treble+, Rock, Flat.
-- **Local settings storage** using `chrome.storage.local`.
-- **Manifest V3 architecture** with a background service worker and offscreen audio processor.
-- **No telemetry, no analytics, no tracking scripts.**
-- **Minimal permission model**: only the permissions required for audio processing.
+- Усиление громкости активной вкладки до **600%**.
+- 3-полосный эквалайзер: низкие, средние и высокие частоты.
+- Готовые пресеты: **Басы+**, **Верхи+**, **Рок**, **Сброс**.
+- Сохранение выбранных настроек в `chrome.storage.local`.
+- Архитектура на **Manifest V3**.
+- Обработка аудио через **Web Audio API**.
+- Минимально необходимые разрешения.
+- Отсутствие аналитики, телеметрии и фонового сбора данных.
 
-## Preview
+## Интерфейс
 
-Add a screenshot or GIF here:
+<p align="center">
+  <img src="assets/screenshot-popup.png" alt="Интерфейс Super Volume Booster" width="420" />
+</p>
 
-```md
-![Popup screenshot](assets/screenshot-popup.png)
+<p align="center">
+  <em>Всплывающее окно расширения: усиление громкости, эквалайзер и быстрые пресеты.</em>
+</p>
+
+## Установка
+
+Пока расширение не опубликовано в Chrome Web Store, его можно установить вручную из исходного кода.
+
+<div align="center">
+  <a href="https://github.com/kokarevn/super-volume-booster/archive/refs/heads/main.zip">
+    <img alt="Скачать расширение" src="https://img.shields.io/badge/Скачать%20расширение-ZIP-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white">
+  </a>
+</div>
+
+### Установка из ZIP-архива
+
+1. Нажмите кнопку **«Скачать расширение»** выше.
+2. Распакуйте скачанный архив.
+3. Откройте в Chrome страницу:
+
+```text
+chrome://extensions/
 ```
 
-Recommended visuals:
+4. Включите режим разработчика (**Developer mode**) в правом верхнем углу.
+5. Нажмите **Load unpacked** / **Загрузить распакованное расширение**.
+6. Выберите распакованную папку проекта.
+7. Закрепите расширение на панели Chrome и откройте вкладку со звуком.
 
-1. `assets/screenshot-popup.png` — extension popup.
-2. `assets/demo.gif` — 5–10 second demo of volume boost and equalizer sliders.
-3. `assets/architecture.png` — simple diagram of the audio processing pipeline.
+### Установка через Git
 
-## Architecture
-
-```mermaid
-flowchart LR
-    A[Popup UI] -->|toggle / update settings| B[Background Service Worker]
-    B -->|creates stream id| C[chrome.tabCapture]
-    B -->|starts processing| D[Offscreen Document]
-    D --> E[MediaStreamSource]
-    E --> F[Bass Filter\n60 Hz lowshelf]
-    F --> G[Mid Filter\n1 kHz peaking]
-    G --> H[Treble Filter\n10 kHz highshelf]
-    H --> I[Gain Node\nup to 600%]
-    I --> J[Audio Output]
+```bash
+git clone https://github.com/kokarevn/super-volume-booster.git
+cd super-volume-booster
 ```
 
-The extension captures audio from the active tab, routes it through a Web Audio graph, applies equalizer filters, applies gain, and outputs the processed signal back to the user.
+После этого загрузите папку проекта через `chrome://extensions/` → **Load unpacked**.
 
-## Privacy
+> Прямая установка «в один клик» возможна после публикации расширения в Chrome Web Store. До этого Chrome требует ручную загрузку распакованной папки.
 
-This project is designed to be privacy-first.
+## Архитектура
 
-| What | Status |
+<p align="center">
+  <img src="assets/architecture.png" alt="Архитектура Super Volume Booster" width="900" />
+</p>
+
+Расширение построено из нескольких независимых компонентов:
+
+| Компонент | Роль |
 |---|---|
-| Analytics | Not used |
-| Tracking scripts | Not used |
-| Remote servers | Not used |
-| User accounts | Not used |
-| Browsing history collection | Not used |
-| Audio upload | Never uploaded |
-| Settings storage | Local only |
+| `manifest.json` | Описывает расширение, версию, разрешения, popup и иконки. |
+| `popup.html` / `popup.js` | Пользовательский интерфейс: кнопка включения, громкость, эквалайзер, пресеты. |
+| `background.js` | Координирует состояние расширения, принимает команды из popup и запускает обработку аудио. |
+| `offscreen.html` / `offscreen.js` | Выполняет фоновую обработку аудиопотока через Web Audio API. |
+| `chrome.storage.local` | Локально хранит настройки громкости и эквалайзера. |
 
-Only the following settings are stored locally:
+Упрощённая логика работы:
+
+```text
+Popup UI → Background Service Worker → Tab Capture → Offscreen Audio Processor → Web Audio API → Audio Output
+```
+
+## Конфиденциальность
+
+Проект изначально сделан по принципу **privacy-first**.
+
+| Что проверяем | Статус |
+|---|---|
+| Аналитика | Не используется |
+| Трекинговые скрипты | Не используются |
+| Рекламные SDK | Не используются |
+| Внешние серверы | Не используются |
+| Аккаунты пользователей | Не используются |
+| Передача аудио | Не выполняется |
+| Сбор истории просмотров | Не выполняется |
+| Хранение настроек | Только локально |
+
+Локально сохраняются только параметры интерфейса:
 
 ```json
 {
@@ -107,39 +152,21 @@ Only the following settings are stored locally:
 }
 ```
 
-See [PRIVACY.md](./PRIVACY.md) for the full privacy policy.
+## Разрешения Chrome
 
-## Permissions
-
-| Permission | Why it is needed |
+| Разрешение | Для чего нужно |
 |---|---|
-| `activeTab` | Allows the extension to work with the currently active tab after the user clicks the extension. |
-| `tabCapture` | Captures the audio stream from the active tab for local processing. |
-| `storage` | Saves volume and equalizer settings locally on the device. |
-| `offscreen` | Runs audio processing in an offscreen document required by Manifest V3. |
+| `activeTab` | Работа с текущей активной вкладкой после действия пользователя. |
+| `tabCapture` | Захват аудиопотока активной вкладки для локальной обработки. |
+| `storage` | Сохранение настроек громкости и эквалайзера на устройстве. |
+| `offscreen` | Фоновая обработка аудио в изолированном offscreen-документе Manifest V3. |
 
-The extension intentionally avoids broad permissions such as `<all_urls>` and does not request access to all websites by default.
+Расширение намеренно не запрашивает широкие разрешения вроде `<all_urls>` и не получает постоянный доступ ко всем сайтам.
 
-## Installation
-
-### Install from source
-
-1. Download or clone this repository.
-2. Open Chrome and go to `chrome://extensions/`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked**.
-5. Select the project folder.
-6. Pin the extension and open any tab with audio.
-
-```bash
-git clone https://github.com/YOUR_USERNAME/super-volume-booster-equalizer.git
-cd super-volume-booster-equalizer
-```
-
-### Repository structure
+## Структура проекта
 
 ```text
-super-volume-booster-equalizer/
+super-volume-booster/
 ├── manifest.json
 ├── background.js
 ├── popup.html
@@ -153,23 +180,17 @@ super-volume-booster-equalizer/
 ├── assets/
 │   ├── logo.png
 │   ├── screenshot-popup.png
-│   └── demo.gif
+│   └── architecture.png
 ├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── INSTALLATION.md
-│   └── STORE_LISTING.md
-├── PRIVACY.md
-├── SECURITY.md
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
 
-## Development
+## Разработка
 
-No build step is required. The extension is written in plain HTML, CSS, and JavaScript.
+Проект написан на обычных **HTML**, **CSS** и **JavaScript**. Сборка не требуется.
 
-To check JavaScript syntax locally:
+Проверка синтаксиса JavaScript:
 
 ```bash
 node --check background.js
@@ -177,39 +198,21 @@ node --check popup.js
 node --check offscreen.js
 ```
 
-## Roadmap
+## Планы развития
 
-- [ ] Add screenshots and short demo GIF.
-- [ ] Add Chrome Web Store page.
-- [ ] Add more equalizer presets.
-- [ ] Add per-site audio profiles.
-- [ ] Add a 5-band or 10-band equalizer mode.
-- [ ] Add import/export of settings.
-- [ ] Add English/Russian UI localization.
-- [ ] Explore Firefox support.
+- Публикация расширения в Chrome Web Store.
+- Добавление демо-GIF в README.
+- Дополнительные пресеты эквалайзера.
+- Профили настроек для разных сайтов.
+- 5- или 10-полосный режим эквалайзера.
+- Импорт и экспорт настроек.
 
-## Contributing
+## Лицензия
 
-Contributions are welcome. Good first issues include:
-
-- UI improvements.
-- New EQ presets.
-- Documentation fixes.
-- Accessibility improvements.
-- Testing on different websites and operating systems.
-
-Read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a pull request.
-
-## Security
-
-If you find a vulnerability or a privacy issue, please do not open a public issue. See [SECURITY.md](./SECURITY.md).
-
-## License
-
-Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
+Проект распространяется по лицензии **MIT**. Подробнее см. [LICENSE](./LICENSE).
 
 ---
 
 <div align="center">
-  <strong>⭐ If this project helps you, please consider giving it a star.</strong>
+  <strong>⭐ Если проект оказался полезен, поставьте звезду на GitHub.</strong>
 </div>
