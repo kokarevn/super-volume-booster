@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Volume Booster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 340px;
+      background: #0d0d1a;
+      color: #e0e0f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2a 100%);
+      padding: 14px 16px 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(70, 90, 255, 0.25);
+    }
+
+    .header img {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(70, 130, 255, 0.6));
+    }
+
+    .header-text h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+
+    .header-text p {
+      font-size: 11px;
+      color: #6a7aff;
+      margin-top: 2px;
+    }
+
+    /* ── STATUS BAR ── */
+    #status {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      letter-spacing: 0.4px;
+      transition: all 0.3s ease;
+    }
+
+    #status.active {
+      background: rgba(0, 200, 100, 0.12);
+      color: #00e676;
+      border-bottom: 1px solid rgba(0, 200, 100, 0.2);
+    }
+
+    #status.inactive {
+      background: rgba(255, 60, 60, 0.1);
+      color: #ff5252;
+      border-bottom: 1px solid rgba(255, 60, 60, 0.2);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #6a7aff;
+      margin-bottom: 12px;
+    }
+
+    /* ── VOLUME BLOCK ── */
+    .volume-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .volume-label {
+      font-size: 11px;
+      color: #888;
+      min-width: 38px;
+    }
+
+    #boostValue {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      min-width: 42px;
+      text-align: right;
+    }
+
+    /* ── RANGE SLIDERS ── */
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: #2a2a4a;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6a7aff, #a855f7);
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(106, 122, 255, 0.6);
+      transition: transform 0.15s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    /* ── TOGGLE BUTTON ── */
+    #toggleBoost {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #4a5aff, #8b5cf6);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(100, 100, 255, 0.35);
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    #toggleBoost:hover {
+      opacity: 0.9;
+    }
+
+    #toggleBoost:active {
+      transform: scale(0.98);
+    }
+
+    /* ── EQ BANDS ── */
+    .eq-band {
+      margin-bottom: 12px;
+    }
+
+    .eq-band:last-child {
+      margin-bottom: 0;
+    }
+
+    .eq-band-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .eq-band-name {
+      font-size: 12px;
+      color: #b0b4d0;
+    }
+
+    .eq-band-value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #a78bfa;
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* ── PRESETS ── */
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .presets button {
+      padding: 7px 4px;
+      border: 1px solid rgba(106, 122, 255, 0.3);
+      border-radius: 6px;
+      background: rgba(106, 122, 255, 0.08);
+      color: #a0a8ff;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.2px;
+    }
+
+    .presets button:hover {
+      background: rgba(106, 122, 255, 0.25);
+      color: #fff;
+      border-color: rgba(106, 122, 255, 0.7);
+    }
+
+    .presets button:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo2.png" alt="Logo">
+    <div class="header-text">
+      <h1>Super Volume Booster</h1>
+      <p>Усиление до 600% + Эквалайзер</p>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div id="status" class="status inactive">🔴 Усиление выключено</div>
+
+  <!-- VOLUME SECTION -->
+  <div class="section">
+    <div class="section-title">Усиление громкости</div>
+    <div class="volume-row">
+      <span class="volume-label">100%</span>
+      <input type="range" id="volumeBoost" min="100" max="600" value="100" step="10">
+      <span id="boostValue">100%</span>
+    </div>
+    <button id="toggleBoost">Включить усиление</button>
+  </div>
+
+  <!-- EQ SECTION -->
+  <div class="section">
+    <div class="section-title">Эквалайзер</div>
+
+    <div class="eq-band">
+      <div class="eq-band-header">
+        <span class="eq-band-name">Низкие (60Hz)</span>
+        <span class="eq-band-value" id="bassValue">0dB</span>
+      </div>
+      <input type="range" class="eq-slider" data-band="bass" min="-20" max="20" value="0" step="1">
+    </div>
+
+    <div class="eq-band">
+      <div class="eq-band-header">
+        <span class="eq-band-name">Средние (1kHz)</span>
+        <span class="eq-band-value" id="midValue">0dB</span>
+      </div>
+      <input type="range" class="eq-slider" data-band="mid" min="-20" max="20" value="0" step="1">
+    </div>
+
+    <div class="eq-band">
+      <div class="eq-band-header">
+        <span class="eq-band-name">Высокие (10kHz)</span>
+        <span class="eq-band-value" id="trebleValue">0dB</span>
+      </div>
+      <input type="range" class="eq-slider" data-band="treble" min="-20" max="20" value="0" step="1">
+    </div>
+
+    <!-- PRESETS -->
+    <div class="presets">
+      <button data-preset="bass">Басы+</button>
+      <button data-preset="treble">Верхи+</button>
+      <button data-preset="rock">Рок</button>
+      <button data-preset="flat">Сброс</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
