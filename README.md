@@ -21,8 +21,8 @@
   </p>
 
   <p>
-    <a href="https://github.com/kokarevn/super-volume-booster/archive/refs/heads/main.zip">
-      <img alt="Скачать ZIP" src="https://img.shields.io/badge/Скачать-ZIP%20архив-7C3AED?style=for-the-badge&logo=github&logoColor=white">
+    <a href="https://github.com/kokarevn/super-volume-booster/releases/latest/download/super-volume-booster-extension.zip">
+      <img alt="Скачать ZIP" src="https://img.shields.io/badge/Скачать-расширение%20ZIP-7C3AED?style=for-the-badge&logo=github&logoColor=white">
     </a>
   </p>
 
@@ -68,10 +68,10 @@
 
 ## Установка
 
-Пока расширение не опубликовано в Chrome Web Store, его можно установить вручную из исходного кода.
+Пока расширение не опубликовано в Chrome Web Store, его можно установить вручную из релизного ZIP-архива. В архив для установки входят только файлы, необходимые для работы расширения, без документации, README и служебных материалов репозитория.
 
 <div align="center">
-  <a href="https://github.com/kokarevn/super-volume-booster/archive/refs/heads/main.zip">
+  <a href="https://github.com/kokarevn/super-volume-booster/releases/latest/download/super-volume-booster-extension.zip">
     <img alt="Скачать расширение" src="https://img.shields.io/badge/Скачать%20расширение-ZIP-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white">
   </a>
 </div>
@@ -79,17 +79,37 @@
 ### Установка из ZIP-архива
 
 1. Нажмите кнопку **«Скачать расширение»** выше.
-2. Распакуйте скачанный архив.
-3. Откройте в Chrome страницу:
+2. Распакуйте скачанный архив `super-volume-booster-extension.zip`.
+3. Внутри должна быть папка `super-volume-booster-extension` с файлами `manifest.json`, `background.js`, `popup.html`, `popup.js`, `offscreen.html`, `offscreen.js`, `logo2.png` и папкой `icons/`.
+4. Откройте в Chrome страницу:
 
 ```text
 chrome://extensions/
 ```
 
-4. Включите режим разработчика (**Developer mode**) в правом верхнем углу.
-5. Нажмите **Load unpacked** / **Загрузить распакованное расширение**.
-6. Выберите распакованную папку проекта.
-7. Закрепите расширение на панели Chrome и откройте вкладку со звуком.
+5. Включите режим разработчика (**Developer mode**) в правом верхнем углу.
+6. Нажмите **Load unpacked** / **Загрузить распакованное расширение**.
+7. Выберите распакованную папку `super-volume-booster-extension`, в которой лежит `manifest.json`.
+8. Закрепите расширение на панели Chrome и откройте вкладку со звуком.
+
+### Что входит в установочный ZIP
+
+```text
+super-volume-booster-extension/
+├── manifest.json
+├── background.js
+├── popup.html
+├── popup.js
+├── offscreen.html
+├── offscreen.js
+├── logo2.png
+└── icons/
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
+```
+
+В архив не включаются `docs/`, `README.md`, изображения для GitHub-оформления и другие файлы, которые не нужны браузеру для запуска расширения.
 
 ### Установка через Git
 
@@ -100,7 +120,7 @@ cd super-volume-booster
 
 После этого загрузите папку проекта через `chrome://extensions/` → **Load unpacked**.
 
-> Прямая установка «в один клик» возможна после публикации расширения в Chrome Web Store. До этого Chrome требует ручную загрузку распакованной папки.
+> Кнопка скачивает не весь репозиторий, а подготовленный релизный архив только с файлами расширения. Прямая установка «в один клик» возможна после публикации расширения в Chrome Web Store. До этого Chrome требует ручную загрузку распакованной папки.
 
 ## Архитектура
 
