@@ -68,7 +68,7 @@
 
 ## Установка
 
-Пока расширение не опубликовано в Chrome Web Store, его можно установить вручную из релизного ZIP-архива. В архив для установки входят только файлы, необходимые для работы расширения, без документации, README и служебных материалов репозитория.
+Пока расширение не опубликовано в Chrome Web Store, его можно установить вручную из релизного ZIP-архива. 
 
 <div align="center">
   <a href="https://github.com/kokarevn/super-volume-booster/releases/latest/download/super-volume-booster-extension.zip">
@@ -109,18 +109,7 @@ super-volume-booster-extension/
     └── icon128.png
 ```
 
-В архив не включаются `docs/`, `README.md`, изображения для GitHub-оформления и другие файлы, которые не нужны браузеру для запуска расширения.
-
-### Установка через Git
-
-```bash
-git clone https://github.com/kokarevn/super-volume-booster.git
-cd super-volume-booster
-```
-
 После этого загрузите папку проекта через `chrome://extensions/` → **Load unpacked**.
-
-> Кнопка скачивает не весь репозиторий, а подготовленный релизный архив только с файлами расширения. Прямая установка «в один клик» возможна после публикации расширения в Chrome Web Store. До этого Chrome требует ручную загрузку распакованной папки.
 
 ## Архитектура
 
@@ -183,45 +172,10 @@ Popup UI → Background Service Worker → Tab Capture → Offscreen Audio Proce
 
 Расширение намеренно не запрашивает широкие разрешения вроде `<all_urls>` и не получает постоянный доступ ко всем сайтам.
 
-## Структура проекта
-
-```text
-super-volume-booster/
-├── manifest.json
-├── background.js
-├── popup.html
-├── popup.js
-├── offscreen.html
-├── offscreen.js
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-├── assets/
-│   ├── logo.png
-│   ├── screenshot-popup.png
-│   └── architecture.png
-├── docs/
-├── LICENSE
-└── README.md
-```
-
-## Разработка
-
-Проект написан на обычных **HTML**, **CSS** и **JavaScript**. Сборка не требуется.
-
-Проверка синтаксиса JavaScript:
-
-```bash
-node --check background.js
-node --check popup.js
-node --check offscreen.js
-```
 
 ## Планы развития
 
 - Публикация расширения в Chrome Web Store.
-- Добавление демо-GIF в README.
 - Дополнительные пресеты эквалайзера.
 - Профили настроек для разных сайтов.
 - 5- или 10-полосный режим эквалайзера.
