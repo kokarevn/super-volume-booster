@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="Super Volume Booster logo" width="200" />
+  <img src="assets/neon_bat_logo_no_background.png" alt="Super Volume Booster logo" width="220" />
 
   <h1>Super Volume Booster & Equalizer</h1>
 
